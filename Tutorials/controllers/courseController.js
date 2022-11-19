@@ -25,7 +25,7 @@ courseController.get('/:id', hasUser(), async (req, res) => {
 courseController.get('/:id/delete', async (req, res) => {
     const course = await getById(req.params.id);
     if (course.owner.toString() != req.user._id.toString()) {
-        return res.redirect('/auth/login'); // тук не го редиректва към логина, защото на логина има гардове.В условието на задачата така или иначе не е описано на къде да се редиректне
+        return res.redirect('/auth/login');
     };
 
     await deleteById(req.params.id);
@@ -57,7 +57,7 @@ courseController.get('/:id/edit', async (req, res) => {
     const course = await getById(req.params.id);
 
     if (course.owner.toString() != req.user._id.toString()) {
-        return res.redirect('/auth/login'); // тук не го редиректва към логина, защото на логина има гардове.В условието на задачата така или иначе не е описано на къде да се редиректне
+        return res.redirect('/auth/login');
     };
 
     res.render('edit', {
@@ -70,7 +70,7 @@ courseController.post('/:id/edit', async (req, res) => {
     const course = await getById(req.params.id);
 
     if (course.owner.toString() != req.user._id.toString()) {
-        return res.redirect('/auth/login'); // тук не го редиректва към логина, защото на логина има гардове.В условието на задачата така или иначе не е описано на къде да се редиректне
+        return res.redirect('/auth/login');
     };
 
     try {
